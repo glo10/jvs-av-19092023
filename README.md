@@ -12,10 +12,7 @@ Installations ci-dessous à faire uniquement si vous n'avez pas ces outils en lo
 
 ### Plugins Visual Studio Code
 
-- Prettier Code Formatter
-- IntelliCode
 - Javascript (ES6) Code Snippets
-- Babel JavaScript
 - Node.js Extension Pack
 - Node.js Modules Intellisense
 - Node.js Exec
