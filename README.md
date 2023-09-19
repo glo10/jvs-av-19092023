@@ -31,22 +31,6 @@ Installations ci-dessous à faire uniquement si vous n'avez pas ces outils en lo
 
 ---
 
-## Dépendances du projet
-
-### Front-End
-
-- `npm i -D babel/core babel/preset-en`
-- `npm i -D standard`
-
-Dans les settings de VSCODE `settings.json` ajouter les lignes suivantes :
-
-`"standard.enable": true,
-"standard.run": "onType",
-"standard.autoFixOnSave": true
-`
-
----
-
 ### Back-End
 
 - `npm i bcryptjs`
