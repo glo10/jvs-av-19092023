@@ -4,7 +4,7 @@
 
 ## Modalités
 
-- **Regardez la vidéo de la présentation du travail final depuis le fichier** [exercice1-connexion.mp4](../ressources/videos/exercice1-connexion.mp4)
+- **Regardez la vidéo de la présentation du travail final depuis le fichier** [exercice1-connexion.mp4](../ressources/videos/app-1.mp4)
 - **Ne pas modifier le HTML ou CSS directement**.
 - **Dans la page index.html fournit, vous devez uniquement insérer la de votre fichier js à l'aide de l'attribut `src` de la balise `<script>` comme vous avez l'habitude de faire**.
 - **Toutes les modifications doivent se faire à travers JavaScript**.
