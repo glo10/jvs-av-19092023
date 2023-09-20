@@ -3776,7 +3776,7 @@
     }
   });
 
-  // 0-exercices/3-exercice/correction/src/js/data-fetch.js
+  // 0-exercices/2-exercice/correction/src/js/data-fetch.js
   var import_rss_to_json = __toESM(require_dist());
   var DataFetch = class {
     async html(src) {
@@ -3988,7 +3988,6 @@
       { url: "https://www.lemonde.fr/rss/plus-lus.xml" }
     ];
     feeds.forEach((f) => {
-      f.url = `${proxy}/${f.url}`;
       const feed = new current_news_default(new DataFetch(), f);
       document.querySelector("main").append(feed);
       setTimeout(async () => {

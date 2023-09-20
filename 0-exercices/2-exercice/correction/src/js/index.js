@@ -1,4 +1,4 @@
-import DataFetch from '../../../../3-exercice/correction/src/js/data-fetch.js'
+import DataFetch from '../../../../2-exercice/correction/src/js/data-fetch.js'
 import Weather from './city-weather.js'
 import CurrentNews from './current-news.js'
 
@@ -21,7 +21,7 @@ window.onload = () => {
   ]
 
   feeds.forEach(f => {
-    f.url = `${proxy}/${f.url}`
+    // f.url = `${proxy}/${f.url}`
     const feed = new CurrentNews(new DataFetch(), f)
     document.querySelector('main').append(feed)
     /**
