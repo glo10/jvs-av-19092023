@@ -398,9 +398,3 @@ article .open-modal {
     transform: rotate(360deg);
   }
 }
-
-@media (min-width: 1400px) {
-  main {
-    max-width: 1320px;
-  }
-}
