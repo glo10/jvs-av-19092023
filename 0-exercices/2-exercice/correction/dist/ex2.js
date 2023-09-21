@@ -3796,7 +3796,7 @@
 
   // 0-exercices/2-exercice/correction/src/js/city-weather.js
   var CityWeather = class extends HTMLElement {
-    static temperature_format = /\d{2}(\.\d{1,2}\s+)?°C/;
+    static temperature_format = /\d{2}(\.\d{1,2}\s+)?.+°C/;
     constructor(city) {
       super();
       this.city = city;
@@ -3906,6 +3906,7 @@
           feed: this.feed,
           items: this.items,
           template
+          // clé et valeur s'ils ont le même nom, on peut juste mettre le nom au lieu de faire template: template
         };
       }).catch((error) => {
         console.error("error ", error);
@@ -3988,6 +3989,7 @@
       { url: "https://www.lemonde.fr/rss/plus-lus.xml" }
     ];
     feeds.forEach((f) => {
+      f.url = `${proxy}/${f.url}`;
       const feed = new current_news_default(new DataFetch(), f);
       document.querySelector("main").append(feed);
       setTimeout(async () => {

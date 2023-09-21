@@ -21,7 +21,7 @@ window.onload = () => {
   ]
 
   feeds.forEach(f => {
-    // f.url = `${proxy}/${f.url}`
+    f.url = `${proxy}/${f.url}`
     const feed = new CurrentNews(new DataFetch(), f)
     document.querySelector('main').append(feed)
     /**

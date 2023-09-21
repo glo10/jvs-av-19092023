@@ -34,6 +34,10 @@ class CurrentNews extends HTMLElement {
     const fetchItems = this.dataFetch.xml(this.feed.url)
     return Promise.all([fetchTplArticle, fetchItems])
       .then((responses) => {
+        /**
+         * Avec Promise.all on rentre ici uniquement si tous les promesses reussissent
+         * s'il y en a au moins un qui échoue, on va directement dans le catch
+         * */
         const artTpl = responses[0]
         const feed = responses[1]
         const items = feed.items
@@ -44,21 +48,22 @@ class CurrentNews extends HTMLElement {
           this.items = [...this.items, item]
           this.innerHTML += this.replaceWith(artTpl, item)
         }
-        return artTpl
+        return artTpl // une promesse dont le résultat s'il est positif pour être récupérer dans un then
       })
       .then((template) => {
         this.openModal()
-        return template
+        return template // idem que pour return artTpl précédent
       })
       .then((template) => {
-        return {
+        return { // une promesse qui retourne un objet qu'on pourra recup dans then comme pour les cas préc.
           feed: this.feed,
           items: this.items,
-          template
+          template // clé et valeur s'ils ont le même nom, on peut juste mettre le nom au lieu de faire template: template
         }
       })
       .catch(error => {
         console.error('error ', error)
+        //
         this.innerHTML = `<p>Aucun article n'a pu être récupéré depuis ${this.feed.url}!</p>`
       })
   }

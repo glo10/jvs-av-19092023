@@ -1,12 +1,12 @@
 class CityWeather extends HTMLElement {
-  static temperature_format = /\d{2}(\.\d{1,2}\s+)?°C/
+  static temperature_format = /\d{2}(\.\d{1,2}\s+)?°.+C/
   constructor (city) {
     super()
     this.city = city
   }
 
-  async connectedCallback () {
-    await this.get()
+  connectedCallback () {
+    this.get()
     this.render()
   }
 
@@ -24,12 +24,17 @@ class CityWeather extends HTMLElement {
       this.city = {
         ...this.city,
         temperature: data.current_weather.temperature
-      }
-    } catch (error) {
-      this.city = {
+      } // exactement la même chose que this.city.temperature = data.current_weather.temparature
+      /**
+       * Plus parlant dans le cas de la création d'une nouvelle variable
+        this.cityPlus = {
         ...this.city,
-        temperature: 'Impossible d\'obtenir la température de la ville'
+        temperature: data.current_weather.temperature
       }
+      */
+
+    } catch (error) {
+        this.city.temperature = 'Impossible d\'obtenir la température de la ville'
     }
   }
 }
