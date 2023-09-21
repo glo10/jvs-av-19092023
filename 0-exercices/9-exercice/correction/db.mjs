@@ -1,5 +1,4 @@
 import sqlite3 from 'sqlite3'
-// pour lire les fichiers
 import { readFile } from 'node:fs/promises'
 
 export default class Db {
@@ -43,9 +42,11 @@ export default class Db {
   end () { // fermeture de la connexion à la bdd
     this.instance.close((err) => {
       if (err) {
-        console.log('can\'t close database')
+        console.error('error close database', err)
+        console.info('can\'t close database')
+      } else {
+        console.info('database closed')
       }
-      console.log('database closed')
     })
   }
 }

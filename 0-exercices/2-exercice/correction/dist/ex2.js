@@ -3796,13 +3796,14 @@
 
   // 0-exercices/2-exercice/correction/src/js/city-weather.js
   var CityWeather = class extends HTMLElement {
-    static temperature_format = /\d{2}(\.\d{1,2}\s+)?.+°C/;
-    constructor(city) {
+    static temperature_format = /\d{2}(\.\d{1,2}\s+)?°.+C/;
+    constructor(city, dataFetch) {
       super();
       this.city = city;
+      this.dataFetch = dataFetch;
     }
-    async connectedCallback() {
-      await this.get();
+    connectedCallback() {
+      this.get();
       this.render();
     }
     render() {
@@ -3812,18 +3813,14 @@
       this.innerHTML = `<p>${this.city.temperature}</p>`;
     }
     async get() {
-      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${this.city.latitude}&longitude=${this.city.longitude}&current_weather=true`);
       try {
-        const data = await res.json();
+        const data = await this.dataFetch.json(`https://api.open-meteo.com/v1/forecast?latitude=${this.city.latitude}&longitude=${this.city.longitude}&current_weather=true`);
         this.city = {
           ...this.city,
           temperature: data.current_weather.temperature
         };
       } catch (error) {
-        this.city = {
-          ...this.city,
-          temperature: "Impossible d'obtenir la temp\xE9rature de la ville"
-        };
+        this.city.temperature = "Impossible d'obtenir la temp\xE9rature de la ville";
       }
     }
   };
@@ -3903,6 +3900,7 @@
         return template;
       }).then((template) => {
         return {
+          // une promesse qui retourne un objet qu'on pourra recup dans then comme pour les cas préc.
           feed: this.feed,
           items: this.items,
           template
@@ -3982,14 +3980,13 @@
       name: "Paris",
       latitude: 48.8534,
       longitude: 2.3488
-    });
+    }, new DataFetch());
     document.querySelector("header").prepend(w);
     const feeds = [
       { url: "https://www.france24.com/fr/rss" },
       { url: "https://www.lemonde.fr/rss/plus-lus.xml" }
     ];
     feeds.forEach((f) => {
-      f.url = `${proxy}/${f.url}`;
       const feed = new current_news_default(new DataFetch(), f);
       document.querySelector("main").append(feed);
       setTimeout(async () => {

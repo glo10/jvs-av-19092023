@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import CityWeather from '../2-exercice/correction/src/js/city-weather'
 import { fetchMockJson } from './utilities'
+import DataFetch from '../2-exercice/correction/src/js/data-fetch'
 global.fetch = vi.fn()
 
 describe('Exercice 2 : weather', () => {
@@ -12,7 +13,7 @@ describe('Exercice 2 : weather', () => {
       longitude: 20
     }
     document.body.innerHTML = '<header></header>'
-    const weather = (new CityWeather(city))
+    const weather = (new CityWeather(city, new DataFetch()))
     document.body.append(weather)
     const response = {
       current_weather: {
@@ -36,7 +37,7 @@ describe('Exercice 2 : weather', () => {
       longitude: 20
     }
     document.body.innerHTML = '<header></header>'
-    const weather = (new CityWeather(city))
+    const weather = (new CityWeather(city, new DataFetch()))
     document.body.append(weather)
     const response = {
       ...city,

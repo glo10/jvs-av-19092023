@@ -1,8 +1,9 @@
 class CityWeather extends HTMLElement {
   static temperature_format = /\d{2}(\.\d{1,2}\s+)?°.+C/
-  constructor (city) {
+  constructor (city, dataFetch) {
     super()
     this.city = city
+    this.dataFetch = dataFetch
   }
 
   connectedCallback () {
@@ -18,9 +19,8 @@ class CityWeather extends HTMLElement {
   }
 
   async get () {
-    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${this.city.latitude}&longitude=${this.city.longitude}&current_weather=true`)
     try {
-      const data = await res.json()
+      const data = await this.dataFetch.json(`https://api.open-meteo.com/v1/forecast?latitude=${this.city.latitude}&longitude=${this.city.longitude}&current_weather=true`)
       this.city = {
         ...this.city,
         temperature: data.current_weather.temperature

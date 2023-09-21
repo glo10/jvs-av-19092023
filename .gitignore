@@ -4,7 +4,6 @@ savoirs-competences
 programme
 2-sequencage
 demo
-**/corrections
 **/coverage
 cours
 **/cypress/**/1-getting-started
@@ -22,8 +21,6 @@ cours
 TODO.md
 package.json
 1-tp/1-real-time.md
-**/__tests__
-**/correction
 **/integration
 **/plugins
 **/support

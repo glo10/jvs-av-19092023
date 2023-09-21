@@ -1,4 +1,4 @@
-import ModalArticle from './modal-article'
+import ModalArticle from './modal-article.js'
 class CurrentNews extends HTMLElement {
   static ARTICLE_TPL = './../../../../1-exercice/correction/src/html/_partials/article.html'
   static MODAL_TPL = './../../../../1-exercice/correction/src/html/_partials/modal.html'
@@ -51,6 +51,7 @@ class CurrentNews extends HTMLElement {
         return artTpl // une promesse dont le résultat s'il est positif pour être récupérer dans un then
       })
       .then((template) => {
+        // on appel ici parce qu'il faut avoir au moins un article dans le DOM
         this.openModal()
         return template // idem que pour return artTpl précédent
       })

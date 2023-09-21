@@ -1,0 +1,62 @@
+{
+  "name": "jvs-av-19092023",
+  "version": "1.0.0",
+  "description": "Advanced JavaScript training",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "test-coverage": "vitest run --coverage", 
+    "e2e": "cypress open",
+    "lint": "node ./node_modules/eslint/bin/eslint 0-exercices/1-exercice/correction/src/js/",
+    "lint-fix": "npx eslint --fix 0-exercices/1-exercice/",
+    "proxy": "node 0-exercices/2-exercice/correction/src/js/proxy.js",
+    "build:ex1": "esbuild 0-exercices/1-exercice/correction/src/js/index.js --outfile=0-exercices/1-exercice/correction/dist/ex1.js --bundle --watch",
+    "build:ex2": "esbuild 0-exercices/2-exercice/correction/src/js/index.js --outfile=0-exercices/2-exercice/correction/dist/ex2.js --watch --bundle",
+    "build:ex3": "esbuild 0-exercices/3-exercice/correction/src/js/index.js --outfile=0-exercices/3-exercice/correction/dist/ex3.js --watch --bundle",
+    "build:ex4:user": "esbuild 0-exercices/4-exercice/correction/src/js/auth-client.js --outfile=0-exercices/4-exercice/correction/dist/auth.js --watch --bundle",
+    "build:ex4:news": "esbuild 0-exercices/4-exercice/correction/src/js/news-client.js --outfile=0-exercices/4-exercice/correction/dist/news.js --watch --bundle",
+    "build:ex5": "esbuild 0-exercices/5-exercice/correction/src/js/index.js --outfile=0-exercices/5-exercice/correction/dist/ex5.js --watch --bundle",
+    "node:ex6": "node 0-exercices/6-exercice/correction/index.mjs --watch",
+    "node:ex7": "node 0-exercices/7-exercice/correction/index.mjs --watch",
+    "node:ex8": "node 0-exercices/8-exercice/correction/index.mjs --watch",
+    "node:ex9": "node 0-exercices/9-exercice/correction/index.mjs --watch",
+    "node:ex10": "node 0-exercices/10-exercice/correction/index.mjs --watch",
+    "build:ex11": "esbuild 0-exercices/11-exercice/correction/src/js/index.js --outfile=0-exercices/11-exercice/correction/dist/ex11.js --watch --bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glo10/jvs-av-19092023.git"
+  },
+  "keywords": [
+    "JS"
+  ],
+  "author": "Glodie Tshimini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glo10/jvs-av-19092023/issues"
+  },
+  "homepage": "https://github.com/glo10/jvs-av-19092023#readme",
+  "devDependencies": {
+    "@testing-library/user-event": "^14.5.1",
+    "@vitest/coverage-v8": "^0.34.4",
+    "cors-anywhere": "^0.4.4",
+    "cypress": "^13.2.0",
+    "esbuild": "^0.19.3",
+    "eslint": "^8.49.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "file-fetch": "^1.7.0",
+    "jquery": "^3.7.1",
+    "jsdom": "^22.1.0",
+    "rss-to-json": "^2.1.1",
+    "vitest": "^0.34.4"
+  },
+  "dependencies": {
+    "@testing-library/dom": "^9.3.3",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.6"
+  }
+}

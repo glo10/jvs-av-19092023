@@ -11,7 +11,7 @@ window.onload = () => {
     name: 'Paris',
     latitude: 48.8534,
     longitude: 2.3488
-  })
+  }, new DataFetch())
   // Ajout du customElement dans notre DOM
   document.querySelector('header').prepend(w)
   // Scenario 2 et 3 : news et modal
@@ -21,7 +21,7 @@ window.onload = () => {
   ]
 
   feeds.forEach(f => {
-    f.url = `${proxy}/${f.url}`
+    // f.url = `${proxy}/${f.url}`
     const feed = new CurrentNews(new DataFetch(), f)
     document.querySelector('main').append(feed)
     /**
